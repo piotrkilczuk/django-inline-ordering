@@ -1,3 +1,6 @@
 .project
 .pydevproject
 _env/
+dist/
+django_inline_ordering.egg-info/
+

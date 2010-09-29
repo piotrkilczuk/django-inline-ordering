@@ -1,15 +1,27 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
+from setuptools import find_packages, setup
 
 setup(
-    name='inline_ordering',
-    version='0.1.0',
+    name='django-inline-ordering',
+    version='0.1.1',
     author='Piotr Kilczuk',
     author_email='p.kilczuk@neumea.pl',
     url='http://github.com/centralniak',
-    description = 'Django app to ease ordering of related data - ' /
-                  'enable Drag&Drop ordering in admin with just a few LOC',
-    packages = ['inline_ordering',],
-    provides = ['django-inline-ordering (0.1.0)'],
+    description='Django app to ease ordering of related data - ' \
+                'enable Drag&Drop ordering in admin with just a few LOC',
+    #packages = ['inline_ordering',],
+    packages=find_packages(),
+    provides=['inline_ordering',],
+    include_package_data=True,
+    classifiers=[
+        'Framework :: Django',
+        #'Development Status :: 5 - Production/Stable',
+        'Environment :: Web Environment',
+        'Programming Language :: Python',
+        'Intended Audience :: Developers',
+        'Operating System :: OS Independent',
+        #'License :: OSI Approved :: BSD License',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+    ],
 )
