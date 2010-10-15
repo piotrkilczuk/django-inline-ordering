@@ -5,7 +5,11 @@ django-inline-ordering
 This app aims at easing implementing drag & drop reordering of inline data in 
 Django Admin. 
 
-This app is at early stage of development, code might change in future releases.
+Recent version of `Grappelli <http://code.google.com/p/django-grappelli/>`_ includes 
+drag and drop inlines, so if you are already using Grappelli, installing 
+django-inline-ordering does not make sense. If you didn't evaluate Grappelli yet,
+I encourage you to do so!
+
 Suggestions on how to improve django-inline-ordering are very welcome.
 
 Installation

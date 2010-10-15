@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='django-inline-ordering',
-    version='0.1.1',
+    version='0.1.2',
     author='Piotr Kilczuk',
     author_email='p.kilczuk@neumea.pl',
     url='http://github.com/centralniak',
