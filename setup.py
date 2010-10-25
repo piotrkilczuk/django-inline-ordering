@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='django-inline-ordering',
-    version='0.1.2',
+    version='0.1.3',
     author='Piotr Kilczuk',
     author_email='p.kilczuk@neumea.pl',
     url='http://github.com/centralniak',
@@ -21,7 +21,7 @@ setup(
         'Programming Language :: Python',
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
-        #'License :: OSI Approved :: BSD License',
+        'License :: OSI Approved :: BSD License',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
 )
