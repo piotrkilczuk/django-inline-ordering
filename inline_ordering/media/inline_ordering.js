@@ -11,7 +11,7 @@ var InlineOrdering = {
      *
      */
     getOrderables: function(){
-        return jQuery('div.inline-group .inline-related input[name$=id]:not([value=])').parent('.inline-related');
+        return jQuery('div.inline-group span.delete').parents('.inline-related');
     },
     
     /**
