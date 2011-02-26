@@ -1,4 +1,5 @@
 from django.contrib.admin import StackedInline
+from inline_ordering import settings
 
 class OrderableStackedInline(StackedInline):
     
@@ -6,6 +7,7 @@ class OrderableStackedInline(StackedInline):
     
     class Media:
         js = (
-              'http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js', 
-              'inline_ordering.js',
+              settings.JQUERY_PREAMBLE_JS_URL,
+              settings.JQUERY_UI_JS_URL,
+              settings.INLINE_ORDERING_JS_URL,
         )
