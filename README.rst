@@ -15,9 +15,9 @@ Suggestions on how to improve django-inline-ordering are very welcome.
 Installation
 ------------
 
-1. Put 'inline-ordering' on your python path
+1. Put 'inline_ordering' on your python path
 
-2. Add 'inline-ordering' to INSTALLED_APPS tuple in settings file 
+2. Add 'inline_ordering' to INSTALLED_APPS tuple in settings file 
 
 Usage
 -----
@@ -60,15 +60,15 @@ want to reorder the photos in the gallery to fit his likings.
    The Meta class declaration is NOT necessary - add it only if you need to set
    your own meta attributes. 
     
-3. Make ``inline_ordering.js`` accessible over HTTP
+3. Make ``inline_ordering.js`` and ``inline_ordering_preamble.js`` accessible over HTTP
 
-   The simplest way is to copy ``media/inline_ordering.js`` to your ``MEDIA_ROOT``.
+   The simplest way is to copy ``media/inline_ordering.js`` and ``media/inline_ordering_preamble.js`` to your ``MEDIA_ROOT``.
 
    If you however believe that would make a mess, take advantage of the 
-   'INLINE_ORDERING_JS' setting and set it to a location which should be requested 
-   when accessing orderable inlines:
+   'INLINE_ORDERING_JS_URL' setting and set it to a location which should be requested 
+   when accessing orderable inlines (the _preamble should be in the same folder):
 
-   ``INLINE_ORDERING_JS = MEDIA_URL + '/js/third_party/inline_ordering.js'``
+   ``INLINE_ORDERING_JS_URL = MEDIA_URL + '/js/third_party/inline_ordering.js'``
   
 Known issues
 ------------
