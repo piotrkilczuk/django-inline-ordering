@@ -27,8 +27,13 @@ var InlineOrdering = {
             update: InlineOrdering.update
         });
         jQuery("div.inline-group").disableSelection();
+
+        jQuery('div.inline_ordering_position').hide();
         
-        jQuery(this).find('div.inline_ordering_position').hide();
+        InlineOrdering.getOrderables().each(function() {
+            jQuery(this).find('fieldset').css('cursor', 'move');
+        });
+
         jQuery('.add-row a').click(InlineOrdering.update);
     },
     
