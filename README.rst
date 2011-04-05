@@ -15,9 +15,9 @@ Suggestions on how to improve django-inline-ordering are very welcome.
 Installation
 ------------
 
-1. Put 'inline-ordering' on your python path
+1. Put 'inline_ordering' on your python path
 
-2. Add 'inline-ordering' to INSTALLED_APPS tuple in settings file 
+2. Add 'inline_ordering' to INSTALLED_APPS tuple in settings file 
 
 Usage
 -----
@@ -39,8 +39,23 @@ want to reorder the photos in the gallery to fit his likings.
      class GalleryPhotoInline(OrderableStackedInline):
     
        model = GalleryPhoto 
+ 
+2. Add jQuery.ui to the global Javascript namespace
 
-2. Setup your model to inherit after Orderable
+   ::
+     
+     class GalleryAdmin(ModelAdmin):
+         
+         inlines = (GalleryPhotoInline, )
+    
+         class Media:
+             js = ('http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js',)
+     
+   This was done automatically in previous versions, but some widgets like for 
+   example the WYMEditor widget, use their own way of loading jQuery UI, which causes 
+   conflicts with inline-ordering. 
+
+3. Setup your model to inherit after Orderable
    
    ::
    
@@ -60,7 +75,7 @@ want to reorder the photos in the gallery to fit his likings.
    The Meta class declaration is NOT necessary - add it only if you need to set
    your own meta attributes. 
     
-3. Make ``inline_ordering.js`` accessible over HTTP
+4. Make ``inline_ordering.js`` accessible over HTTP
 
    The simplest way is to copy ``media/inline_ordering.js`` to your ``MEDIA_ROOT``.
 
@@ -77,9 +92,7 @@ Known issues
    of a proper jQuery selector.
 
 2. Reordering won't work for new records until saved. This needs a onchange 
-   handler for the record form. 
-
-3. Possibly ordering will break when there are multiple stacked inlines on your admin page.
+   handler for the record form or some model refactoring. 
 
 Kudos
 -----
