@@ -4,3 +4,4 @@ _env/
 dist/
 django_inline_ordering.egg-info/
 *.pyc
+_env
