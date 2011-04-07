@@ -111,6 +111,14 @@ Known issues
 2. At this point there is no support for tabular inlines. If you would like to 
    approach this problem, fork the project on Github.
 
+Development
+-----------
+
+A simple test project has been added in fdc2189 under tests/testproject. Use 
+tools/buildenv to build a virtualenv for development and syncdb to create necessary
+models and admin permissions. No unit tests at this point as this is a browser-side 
+thing mostly, improvements welcome.
+
 Kudos
 -----
 simon for http://djangosnippets.org/snippets/1053/
