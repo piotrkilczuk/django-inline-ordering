@@ -10,6 +10,12 @@ drag and drop inlines, so if you are already using Grappelli, installing
 django-inline-ordering does not make sense. If you didn't evaluate Grappelli yet,
 I encourage you to do so!
 
+The django-inline-ordering is being tested during development on: 
+
+- Fx 3.5+
+- Google Chrome 10+
+- Opera 11+ 
+
 Suggestions on how to improve django-inline-ordering are very welcome.
 
 Installation
@@ -24,10 +30,11 @@ Usage
 
 For each model that you want to be reorderable with drag & drop, you need to 
 setup an admin class and slightly modify model declaration. This way you can 
-easily apply reordering to existing model classes. You'll also have to copy one
-file to your MEDIA_ROOT and that's all :)
+easily apply reordering to existing model classes. You'll also have to run 
+``collectstatic`` task or copy one file to your MEDIA_ROOT when using Django 
+< 1.3.
 
-Let's start with a simple example: Gallery has many GalleryPhotos. User might 
+Let's start with a simple example: Gallery has many Images. User might 
 want to reorder the photos in the gallery to fit his likings.
 
 1. Setup your admin inline class to inherit after OrderableStackedInline
@@ -36,32 +43,36 @@ want to reorder the photos in the gallery to fit his likings.
      
      from inline_ordering.admin import OrderableStackedInline
      
-     class GalleryPhotoInline(OrderableStackedInline):
+     class ImageInline(OrderableStackedInline):
     
-       model = GalleryPhoto 
+       model = Image 
  
-2. Add jQuery.ui to the global Javascript namespace
+2. Add jQuery and jQuery.ui to the global Javascript namespace
 
    ::
      
      class GalleryAdmin(ModelAdmin):
          
-         inlines = (GalleryPhotoInline, )
+         model = Gallery
+         inlines = (ImageInline, )
     
          class Media:
-             js = ('http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js',)
+             js = (
+                 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',
+                 'http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js',
+             )
      
-   This was done automatically in previous versions, but some widgets like for 
-   example the WYMEditor widget, use their own way of loading jQuery UI, which causes 
-   conflicts with inline-ordering. 
+   Altough this could be done automatically, some widgets like for 
+   example the WYMEditor widget, use their own way of loading jQuery UI, which 
+   could lead to conflicts with inline-ordering. 
 
 3. Setup your model to inherit after Orderable
    
    ::
    
-     from inline_ordering.models import Orderables
+     from inline_ordering.models import Orderable
      
-     class GalleryPhoto(Orderable):
+     class Image(Orderable):
        src = models.ImageField(upload_to='gallery/images')
        title = models.CharField(max_length=255)
        alt = models.TextField()
@@ -77,22 +88,28 @@ want to reorder the photos in the gallery to fit his likings.
     
 4. Make ``inline_ordering.js`` accessible over HTTP
 
-   The simplest way is to copy ``media/inline_ordering.js`` to your ``MEDIA_ROOT``.
+   Since Django 1.3, there is a `staticfiles app`_ that django-inline-ordering is 
+   aware of. Just run ``manage.py collectstatic`` to copy/symlink media files.
+   
+.. _staticfiles app: http://docs.djangoproject.com/en/1.3/ref/contrib/staticfiles/
+
+   The simplest way, back in Django 1.2, was to copy 
+   ``media/inline_ordering.js`` to your ``MEDIA_ROOT``.
 
    If you however believe that would make a mess, take advantage of the 
    'INLINE_ORDERING_JS' setting and set it to a location which should be requested 
    when accessing orderable inlines:
 
-   ``INLINE_ORDERING_JS = MEDIA_URL + '/js/third_party/inline_ordering.js'``
+   ``INLINE_ORDERING_JS = STATIC_URL + '/js/third_party/inline_ordering.js'``
   
 Known issues
 ------------
 
-1. Reordering might not work if primary key is not named 'id'. This is a matter 
-   of a proper jQuery selector.
-
-2. Reordering won't work for new records until saved. This needs a onchange 
+1. Reordering won't work for new records until saved. This needs a onchange 
    handler for the record form or some model refactoring. 
+
+2. At this point there is no support for tabular inlines. If you would like to 
+   approach this problem, fork the project on Github.
 
 Kudos
 -----

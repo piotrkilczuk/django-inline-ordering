@@ -11,7 +11,18 @@ var InlineOrdering = {
      *
      */
     getOrderables: function(){
-        return jQuery('div.inline-group span.delete').parents('.inline-related');
+        var allInlineRows = jQuery('.inline-related');
+        var ids = [];
+        
+        for (var i = 0; i < allInlineRows.length; i++) {
+            if (jQuery('.inline_ordering_position input', allInlineRows[i]).val()) {
+                ids.push('#' + allInlineRows[i].id);
+            }
+        }
+        
+        // this redundant way is required, so that proper order is maintained, 
+        // otherwise orderables were returned in more or less random order 	
+        return jQuery(ids.join(', ')); 
     },
     
     /**
@@ -26,10 +37,14 @@ var InlineOrdering = {
             items: InlineOrdering.getOrderables(),
             update: InlineOrdering.update
         });
-        jQuery("div.inline-group").disableSelection();
+        //jQuery("div.inline-group").disableSelection();
         
-        jQuery(this).find('div.inline_ordering_position').hide();
+        jQuery('div.inline_ordering_position').hide();
+        jQuery('td.inline_ordering_position input').hide();
+        
         jQuery('.add-row a').click(InlineOrdering.update);
+		
+		InlineOrdering.getOrderables().css('cursor', 'move');
     },
     
     /**
