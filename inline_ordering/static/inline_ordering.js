@@ -11,26 +11,27 @@ var InlineOrdering = {
      *
      */
     getOrderables: function(){
-        var allInlineRows = jQuery('.inline-related');
+        var allInlineRows = InlineOrdering.jQuery('.inline-related');
         var ids = [];
         
         for (var i = 0; i < allInlineRows.length; i++) {
-            if (jQuery('.inline_ordering_position input', allInlineRows[i]).val()) {
+            if (InlineOrdering.jQuery('.inline_ordering_position input', allInlineRows[i]).val()) {
                 ids.push('#' + allInlineRows[i].id);
             }
         }
         
         // this redundant way is required, so that proper order is maintained, 
         // otherwise orderables were returned in more or less random order 	
-        return jQuery(ids.join(', ')); 
+        return InlineOrdering.jQuery(ids.join(', ')); 
     },
     
     /**
      * Inits the jQuery UI D&D
      *
      */
-    init: function(){
-        jQuery("div.inline-group").sortable({
+    init: function(jQuery){
+        InlineOrdering.jQuery = jQuery;
+        InlineOrdering.jQuery("div.inline-group").sortable({
             axis: 'y',
             placeholder: 'ui-state-highlight',
             forcePlaceholderSize: 'true',
@@ -39,13 +40,15 @@ var InlineOrdering = {
         });
         //jQuery("div.inline-group").disableSelection();
         
-        jQuery('div.inline_ordering_position').hide();
-        jQuery('td.inline_ordering_position input').hide();
+        InlineOrdering.jQuery('div.inline_ordering_position').hide();
+        InlineOrdering.jQuery('td.inline_ordering_position input').hide();
         
-        jQuery('.add-row a').click(InlineOrdering.update);
-		
-		InlineOrdering.getOrderables().css('cursor', 'move');
+        InlineOrdering.jQuery('.add-row a').click(InlineOrdering.update);
+        
+        InlineOrdering.getOrderables().css('cursor', 'move');
     },
+    
+    jQuery: null,
     
     /**
      * Updates the position field
@@ -53,12 +56,12 @@ var InlineOrdering = {
      */
     update: function(){
         InlineOrdering.getOrderables().each(function(i){
-            jQuery(this).find('input[id$=inline_ordering_position]').val(i + 1);
+            InlineOrdering.jQuery(this).find('input[id$=inline_ordering_position]').val(i + 1);
         });
     }
     
 };
 
 jQuery(function(){
-    InlineOrdering.init();
+    InlineOrdering.init(jQuery || django.jQuery);
 });

@@ -29,11 +29,11 @@ class GalleryAdmin(admin.ModelAdmin):
     model = models.Gallery
     inlines = (ImageInline, TestimonialInline,)
     
-    class Media:
-        js = (
-            'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',
-            'http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js',
-        )
+#    class Media:
+#        js = (
+#            'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',
+#            'http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js',
+#        )
 
 
 admin.site.register(models.Gallery, GalleryAdmin)
