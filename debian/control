@@ -1,0 +1,11 @@
+Source: python-django-inline-ordering
+Section: python
+Priority: optional
+Maintainer: Bruno Clermont <bruno@sologroup.gs>
+Build-Depends: debhelper, python-support
+
+Package: python-django-inline-ordering
+Architecture: all
+Depends: ${misc:Depends}, python-support, python-django
+Provides: ${misc:Depends}
+Description: Django classy-tags module
