@@ -1,0 +1,12 @@
+Source: python-django-inline-ordering
+Section: python
+Priority: optional
+Maintainer: Bruno Clermont <bruno@sologroup.gs>
+Build-Depends: debhelper, python-support
+
+Package: python-django-inline-ordering
+Architecture: all
+Depends: ${misc:Depends}, python-support, python-django, python-django-appmedia
+Provides: ${misc:Depends}
+Description: This app aims at easing implementing drag & drop reordering
+ of inline data in Django Admin.

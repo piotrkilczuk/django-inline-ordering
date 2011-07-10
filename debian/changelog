@@ -1,0 +1,11 @@
+python-django-inline-ordering (0.1.3-4) testing; urgency=low
+
+  * Use django-appmedia
+
+ -- Bruno Clermont <bruno@sologroup.gs>  Tue, 10 Jul 2011 12:00:00 -0500
+
+python-django-inline-ordering (0.1.3-0) unstable; urgency=low
+
+  * Initial import
+
+ -- Bruno Clermont <bruno@sologroup.gs>  Tue, 7 Jun 2011 12:00:00 -0500
