@@ -8,4 +8,5 @@ Package: python-django-inline-ordering
 Architecture: all
 Depends: ${misc:Depends}, python-support, python-django
 Provides: ${misc:Depends}
-Description: Django classy-tags module
+Description: This app aims at easing implementing drag & drop reordering
+ of inline data in Django Admin.
