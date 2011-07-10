@@ -6,7 +6,7 @@ class OrderableStackedInline(StackedInline):
     """Adds necessary media files to regular Django StackedInline"""
     
     class Media:
-        js = ('inline_ordering.js',)
+        js = ('inline_ordering/inline_ordering.js',)
 
 
 class OrderableTabularInline(TabularInline):
@@ -14,4 +14,4 @@ class OrderableTabularInline(TabularInline):
     """Adds necessary media files to regular Django TabularInline"""
     
     class Media:
-        js = ('inline_ordering.js',)
+        js = ('inline_ordering/inline_ordering.js',)
