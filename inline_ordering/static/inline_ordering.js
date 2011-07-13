@@ -63,5 +63,5 @@ var InlineOrdering = {
 };
 
 jQuery(function(){
-    InlineOrdering.init(jQuery || django.jQuery);
+    InlineOrdering.init(django.jQuery);
 });
