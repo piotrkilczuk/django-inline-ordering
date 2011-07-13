@@ -12,7 +12,8 @@ I encourage you to do so!
 
 The django-inline-ordering is being tested during development on: 
 
-- Fx 3.5+
+- Firefox 3.5+
+- Internet Explorer 7+
 - Google Chrome 10+
 - Opera 11+ 
 
@@ -43,30 +44,18 @@ want to reorder the photos in the gallery to fit his likings.
      
      from inline_ordering.admin import OrderableStackedInline
      
+     
      class ImageInline(OrderableStackedInline):
     
        model = Image 
- 
-2. Add jQuery and jQuery.ui to the global Javascript namespace
-
-   ::
+     
      
      class GalleryAdmin(ModelAdmin):
          
          model = Gallery
          inlines = (ImageInline, )
-    
-         class Media:
-             js = (
-                 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',
-                 'http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js',
-             )
-     
-   Altough this could be done automatically, some widgets like for 
-   example the WYMEditor widget, use their own way of loading jQuery UI, which 
-   could lead to conflicts with inline-ordering. 
 
-3. Setup your model to inherit after Orderable
+2. Setup your model to inherit after Orderable
    
    ::
    
@@ -86,7 +75,7 @@ want to reorder the photos in the gallery to fit his likings.
    The Meta class declaration is NOT necessary - add it only if you need to set
    your own meta attributes. 
     
-4. Make ``inline_ordering.js`` accessible over HTTP
+3. Make ``inline_ordering.js`` accessible over HTTP
 
    Since Django 1.3, there is a `staticfiles app`_ that django-inline-ordering is 
    aware of. Just run ``manage.py collectstatic`` to copy/symlink media files.
@@ -115,9 +104,9 @@ Development
 -----------
 
 A simple test project has been added in fdc2189 under tests/testproject. Use 
-tools/buildenv to build a virtualenv for development and syncdb to create necessary
-models and admin permissions. No unit tests at this point as this is a browser-side 
-thing mostly, improvements welcome.
+tools/buildenv.sh to build a virtualenv for development and syncdb to create 
+necessary models and admin permissions. No unit tests at this point as this is 
+a browser-side thing mostly, improvements welcome.
 
 Kudos
 -----
