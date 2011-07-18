@@ -10,18 +10,19 @@ var InlineOrdering = {
      * @todo Primary key might not be 'id' - better selector needed
      *
      */
-    getOrderables: function(){
-        var allInlineRows = InlineOrdering.jQuery('.inline-related');
-        var ids = [];
+    getOrderables: function () {
+        var allInlineRows = InlineOrdering.jQuery('.inline-related'),
+            i = 0,
+            ids = [];
         
-        for (var i = 0; i < allInlineRows.length; i++) {
+        for (i = 0; i < allInlineRows.length; i = i + 1) {
             if (InlineOrdering.jQuery('.inline_ordering_position input', allInlineRows[i]).val()) {
                 ids.push('#' + allInlineRows[i].id);
             }
         }
         
         // this redundant way is required, so that proper order is maintained, 
-        // otherwise orderables were returned in more or less random order 	
+        // otherwise orderables were returned in more or less random order
         return InlineOrdering.jQuery(ids.join(', ')); 
     },
     
@@ -29,7 +30,7 @@ var InlineOrdering = {
      * Inits the jQuery UI D&D
      *
      */
-    init: function(jQuery){
+    init: function (jQuery) {
         InlineOrdering.jQuery = jQuery;
         InlineOrdering.jQuery("div.inline-group").sortable({
             axis: 'y',
@@ -46,6 +47,8 @@ var InlineOrdering = {
         InlineOrdering.jQuery('.add-row a').click(InlineOrdering.update);
         
         InlineOrdering.getOrderables().css('cursor', 'move');
+
+        InlineOrdering.update();
     },
     
     jQuery: null,
@@ -54,16 +57,16 @@ var InlineOrdering = {
      * Updates the position field
      *
      */
-    update: function(){
-        InlineOrdering.getOrderables().each(function(i){
+    update: function () {
+        InlineOrdering.getOrderables().each(function (i) {
             InlineOrdering.jQuery(this).find('input[id$=inline_ordering_position]').val(i + 1);
             InlineOrdering.jQuery(this).find('h3 > span.position').remove();
-            InlineOrdering.jQuery(this).find('h3').append('<span class="position">#' + (i + 1) + '</span>');
+            InlineOrdering.jQuery(this).find('h3').append('<span class="position">#' + (i + 1).toFixed() + '</span>');
         });
     }
     
 };
 
-jQuery(function(){
+django.jQuery(function () {
     InlineOrdering.init(django.jQuery);
 });
