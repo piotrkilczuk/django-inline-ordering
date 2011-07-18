@@ -1,18 +1,15 @@
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls.defaults import include, patterns, url
 from django.contrib import admin
+from django.conf import settings
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    ('^$', 'django.views.generic.simple.redirect_to', {'url' : '/admin/'}),
-    
-    # Examples:
-    # url(r'^$', 'testapp.views.home', name='home'),
-    # url(r'^testapp/', include('testapp.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    url(r'^admin/', include(admin.site.urls)),
+    (r'^admin/', include(admin.site.urls)),
+    #url(r'^', include('cms.urls')),
 )
+
+if settings.DEBUG:
+    urlpatterns += patterns('django.contrib.staticfiles.views',
+        url(r'^static/(?P<path>.*)$', 'serve'),
+    )
