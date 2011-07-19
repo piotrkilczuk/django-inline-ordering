@@ -59,7 +59,7 @@ var InlineOrdering = {
      */
     update: function () {
         InlineOrdering.getOrderables().each(function (i) {
-            InlineOrdering.jQuery(this).find('input[id$=inline_ordering_position]').val(i + 1);
+            InlineOrdering.jQuery('input[id$=inline_ordering_position]', this).val(i + 1);
             InlineOrdering.jQuery(this).find('h3 > span.position').remove();
             InlineOrdering.jQuery(this).find('h3').append('<span class="position">#' + (i + 1).toFixed() + '</span>');
         });
