@@ -25,4 +25,9 @@ setup(
         'License :: OSI Approved :: BSD License',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
+    package_data={
+        'inline_ordering': [
+            'media/inline_ordering.js'
+        ],
+    },
 )
