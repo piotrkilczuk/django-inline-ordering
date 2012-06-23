@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='django-inline-ordering',
-    version='0.4.9',
+    version='1.0.0',
     author='Piotr Kilczuk',
     author_email='p.kilczuk@neumea.pl',
     url='http://github.com/centralniak',
@@ -17,7 +17,7 @@ setup(
     install_requires=['django-admin-jqueryui==1.0.0', ],
     classifiers=[
         'Framework :: Django',
-        #'Development Status :: 5 - Production/Stable',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
         'Programming Language :: Python',
         'Intended Audience :: Developers',
