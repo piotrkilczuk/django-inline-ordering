@@ -107,7 +107,7 @@ A simple test project has been added in fdc2189 under tests/testproject. Use
 tools/buildenv.sh to build a virtualenv for development and syncdb to create 
 necessary models and admin permissions.
 
-Version 1.0.0 is likely to be the last one, as I'm planning to release a new
+Version 1.0.1 is likely to be the last one, as I'm planning to release a new
 library to support ordering in Django admin both of inlines as well as on the
 change list. 
 
