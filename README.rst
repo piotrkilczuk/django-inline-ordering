@@ -80,9 +80,7 @@ want to reorder the photos in the gallery to fit his likings.
    Since Django 1.3, there is a `staticfiles app`_ that django-inline-ordering is 
    aware of. Just run ``manage.py collectstatic`` to copy/symlink media files.
    
-.. _staticfiles app: http://docs.djangoproject.com/en/1.3/ref/contrib/staticfiles/
-
-   The simplest way, back in Django 1.2, was to copy 
+   The simplest way, back in Django 1.2, was to copy
    ``media/inline_ordering.js`` to your ``MEDIA_ROOT``.
 
    If you however believe that would make a mess, take advantage of the 
@@ -90,7 +88,9 @@ want to reorder the photos in the gallery to fit his likings.
    when accessing orderable inlines:
 
    ``INLINE_ORDERING_JS = STATIC_URL + '/js/third_party/inline_ordering.js'``
-  
+
+.. _staticfiles app: http://docs.djangoproject.com/en/1.3/ref/contrib/staticfiles/
+
 Known issues
 ------------
 
