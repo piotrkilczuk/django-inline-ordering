@@ -16,7 +16,7 @@ var InlineOrdering = {
             ids = [];
         
         for (i = 0; i < allInlineRows.length; i = i + 1) {
-            if (InlineOrdering.jQuery('.inline_ordering_position input', allInlineRows[i]).val()) {
+            if (InlineOrdering.jQuery('.inline_ordering_position input, .field-inline_ordering_position input', allInlineRows[i]).val()) {
                 ids.push('#' + allInlineRows[i].id);
             }
         }
