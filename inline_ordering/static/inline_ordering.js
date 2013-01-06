@@ -41,6 +41,7 @@ var InlineOrdering = {
         });
         //jQuery("div.inline-group").disableSelection();
         
+        InlineOrdering.jQuery('div.field-inline_ordering_position').hide();
         InlineOrdering.jQuery('div.inline_ordering_position').hide();
         InlineOrdering.jQuery('td.inline_ordering_position input').hide();
         
