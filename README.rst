@@ -17,7 +17,8 @@ The django-inline-ordering is being tested during development on:
 - Google Chrome 10+
 - Opera 11+ 
 
-Suggestions on how to improve django-inline-ordering are very welcome.
+This app is unlikely to be further developed, however I'm planning to release 
+a successor library for Django 1.4+ in future.
 
 Installation
 ------------
